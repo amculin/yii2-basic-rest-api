@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\customs\BaseActiveRecord as BaseModel;
 use Yii;
 
 /**
@@ -12,7 +13,7 @@ use Yii;
  * @property string $description
  * @property int $enable
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends BaseModel
 {
     /**
      * {@inheritdoc}

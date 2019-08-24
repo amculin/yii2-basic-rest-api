@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\customs\BaseActiveRecord as BaseModel;
 use Yii;
 
 /**
@@ -12,7 +13,7 @@ use Yii;
  * @property string $file
  * @property int $enable
  */
-class Image extends \yii\db\ActiveRecord
+class Image extends BaseModel
 {
     /**
      * {@inheritdoc}
