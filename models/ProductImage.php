@@ -52,4 +52,11 @@ class ProductImage extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+
+        Image::findOne($this->image_id)->delete();
+    }
 }

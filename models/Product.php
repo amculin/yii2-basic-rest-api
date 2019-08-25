@@ -87,4 +87,12 @@ class Product extends BaseModel
             }
         }
     }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+
+        ProductImage::deleteAll(['product_id' => $this->id]);
+        CategoryProduct::deleteAll(['product_id' => $this->id]);
+    }
 }
