@@ -48,4 +48,14 @@ class Product extends BaseModel
             'enable' => 'Enable',
         ];
     }
+
+    public function getProductImages()
+    {
+        return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);
+    }
+
+    public function getProductCategories()
+    {
+        return $this->hasMany(CategoryProduct::className(), ['product_id' => 'id']);
+    }
 }

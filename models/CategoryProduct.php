@@ -42,4 +42,14 @@ class CategoryProduct extends \yii\db\ActiveRecord
             'category_id' => 'Category ID',
         ];
     }
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
+    }
 }
