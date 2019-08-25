@@ -47,6 +47,9 @@ class ProductController extends ActiveController
             'with' => ['productImages', 'productCategories']
         ])->where(['id' => $id])->one();
 
+        if ($model == null)
+            throw new \yii\web\NotFoundHttpException('Object not found: ' . $id);
+
         $data = [];
 
         $data['id'] = $model->id;
@@ -54,7 +57,7 @@ class ProductController extends ActiveController
         $data['description'] = $model->description;
         $data['enable'] = $model->enable;
         $data['images'] = $model->productImages != null ? $this->getProductImagesList($model->productImages) : [];
-        //$data['categories'] = $model->productCategories != null ? $this->getProductCategoriesList($model->productCategories) : [];
+        $data['categories'] = $model->productCategories != null ? $this->getProductCategoriesList($model->productCategories) : [];
 
         return $data;
     }
