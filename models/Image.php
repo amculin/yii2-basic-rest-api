@@ -48,4 +48,14 @@ class Image extends BaseModel
             'enable' => 'Enable',
         ];
     }
+
+    public function saveProductImage($productId)
+    {
+        $this->save();
+
+        $productImage = new ProductImage();
+        $productImage->product_id = $productId;
+        $productImage->image_id = $this->id;
+        $productImage->save();
+    }
 }

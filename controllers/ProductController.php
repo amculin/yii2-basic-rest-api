@@ -17,6 +17,7 @@ class ProductController extends ActiveController
 
         // customize the data provider preparation with the "prepareDataProvider()" method
         $actions['index']['prepareDataProvider'] = [$this, 'listAll'];
+        $actions['view']['findModel'] = [$this, 'findModel'];
 
         return $actions;
     }
@@ -36,6 +37,24 @@ class ProductController extends ActiveController
             $data[$i]['categories'] = $val->productCategories != null ? $this->getProductCategoriesList($val->productCategories) : [];
             $i++;
         }
+
+        return $data;
+    }
+
+    public function findModel($id)
+    {
+        $model = $this->modelClass::find([
+            'with' => ['productImages', 'productCategories']
+        ])->where(['id' => $id])->one();
+
+        $data = [];
+
+        $data['id'] = $model->id;
+        $data['name'] = $model->name;
+        $data['description'] = $model->description;
+        $data['enable'] = $model->enable;
+        $data['images'] = $model->productImages != null ? $this->getProductImagesList($model->productImages) : [];
+        //$data['categories'] = $model->productCategories != null ? $this->getProductCategoriesList($model->productCategories) : [];
 
         return $data;
     }

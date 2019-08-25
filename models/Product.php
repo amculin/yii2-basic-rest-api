@@ -58,4 +58,33 @@ class Product extends BaseModel
     {
         return $this->hasMany(CategoryProduct::className(), ['product_id' => 'id']);
     }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        if ($insert) {
+            $categories = Yii::$app->request->post('categories');
+            $images = Yii::$app->request->post('images');
+
+            foreach ($categories as $key => $val) {
+                $productCategory = new CategoryProduct();
+                $productCategory->product_id = $this->id;
+                $productCategory->category_id = $val;
+                $productCategory->save();
+            }
+
+            $files = \yii\web\UploadedFile::getInstancesByName('images');
+            $uploadPath = 'images/';
+
+            foreach ($files as $key => $object) {
+                $image = new Image();
+                $image->name = $this->name;
+                $image->file = $object->getBaseName() . time() . '.' . $object->getExtension();
+                $image->enable = 1;
+                $object->saveAs($uploadPath . $image->file);
+                $image->saveProductImage($this->id);
+            }
+        }
+    }
 }
