@@ -15,6 +15,8 @@ use Yii;
  */
 class Image extends BaseModel
 {
+    const UPLOAD_PATH = 'images/';
+
     /**
      * {@inheritdoc}
      */

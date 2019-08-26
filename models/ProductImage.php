@@ -57,6 +57,8 @@ class ProductImage extends \yii\db\ActiveRecord
     {
         parent::afterDelete();
 
-        Image::findOne($this->image_id)->delete();
+        $image = Image::findOne($this->image_id);
+        $image->delete();
+        unlink($image::UPLOAD_PATH . $image->file);
     }
 }

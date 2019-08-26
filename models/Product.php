@@ -75,14 +75,13 @@ class Product extends BaseModel
             }
 
             $files = \yii\web\UploadedFile::getInstancesByName('images');
-            $uploadPath = 'images/';
 
             foreach ($files as $key => $object) {
                 $image = new Image();
                 $image->name = $this->name;
                 $image->file = $object->getBaseName() . time() . '.' . $object->getExtension();
                 $image->enable = 1;
-                $object->saveAs($uploadPath . $image->file);
+                $object->saveAs($image::UPLOAD_PATH . $image->file);
                 $image->saveProductImage($this->id);
             }
         } else {
