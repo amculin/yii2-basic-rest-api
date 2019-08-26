@@ -51,7 +51,7 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => ['category', 'product']],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['category', 'product', 'product-image']],
             ],
         ],
     ],
