@@ -52,9 +52,20 @@ Import file `pretest_privy.sql` to create database scheme including some data se
 
 Import file `Pretest-Privy.postman_collection.json` for API Collection & `Pretest-Privy.postman_environment.json` for the environment. You can import those file using Postman or Insomnia.
 
-### Running Application
+RUNNING APPLICATION
+-------------------
+
+### Create Server
 
 Simply run this command from your console `php yii server --port=7878`, so you can access it by calling `http://localhost:7878`.
 You can change the port, but you have to change the REST Client environment settings too.
 
 <img src="https://raw.githubusercontent.com/amculin/yii2-basic-rest-api/develop/readme-source/running-yii-application.jpg" />
+
+### Testing via Insomnia
+
+<img src="https://raw.githubusercontent.com/amculin/yii2-basic-rest-api/develop/readme-source/api-collection-insomnia.jpg" />
+
+### Testing via Postman
+
+<img src="https://raw.githubusercontent.com/amculin/yii2-basic-rest-api/develop/readme-source/api-collection-postman.jpg" />
