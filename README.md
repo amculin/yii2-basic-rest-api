@@ -57,7 +57,7 @@ RUNNING APPLICATION
 
 ### Create Server
 
-Simply run this command from your console `php yii server --port=7878`, so you can access it by calling `http://localhost:7878`.
+Simply run this command from your console `php yii serve --port=7878`, so you can access it by calling `http://localhost:7878`.
 You can change the port, but you have to change the REST Client environment settings too.
 
 <img src="https://raw.githubusercontent.com/amculin/yii2-basic-rest-api/develop/readme-source/running-yii-application.jpg" />
