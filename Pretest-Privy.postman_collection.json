@@ -1,0 +1,338 @@
+{
+	"info": {
+		"_postman_id": "fbd02880-f64c-4f56-aa5e-e59fddd6b3db",
+		"name": "Pretest Privy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "List All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detil Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"Laptop/Notebook/Netbook\",\n\t\"enable\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories/9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Scanner\",\n\t\"enable\": false\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/8",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "List All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detil Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/18",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"18"
+							]
+						},
+						"description": "Get detil data of a single data, including it's categories & images"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "HP AMD Ryzen 5 Envy 13-AR0008AU x360 +SSD 512GB +Windows 10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "HP Prosesor AMD Ryzen 5 Envy 13-AR0008AU x360 + Windows 10\n\nAMD Quad-Core Ryzen 5 3500U 2.1 GHz Upto 3.7 GHz | Radeon Vega 8 | Layar 13.3″ Full HD Touchscreen Slim Bezel + Stylus | SSD 512GB m.2 NVME | RAM 8GB | WiFi | Bluetooth | Webcam | Fingerprint | Backlight Keyboard | OS Windows 10 | Garansi 2 Tahun\n\nInterface : 1 USB 3.1 Type-C Gen 2, HDMI, 2 USB 3.1 Gen 1, Audio,MicroSD",
+									"type": "text"
+								},
+								{
+									"key": "enable",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categories[]",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "categories[]",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": "/E:/Pictures/hp-envy-13-ag0023au-x360.jpg"
+								},
+								{
+									"key": "images[]",
+									"type": "file",
+									"src": "/E:/Pictures/19222856_858589367615666_3672998411834903964_o.jpg",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/19",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"HP AMD Ryzen 5 Envy 13-AR0008AU x360\",\n\t\"description\": \"HP Prosesor AMD Ryzen 5 Envy 13-AR0008AU x360 + Windows 10 \\n AMD Quad-Core Ryzen 5 3500U 2.1 GHz Upto 3.7 GHz \\n Radeon Vega 8\\nLayar 13.3' Full HD Touchscreen Slim Bezel + Stylus \\n SSD 512GB m.2 NVME \\n RAM 8GB \\n WiFi \\n Bluetooth \\n Webcam \\n Fingerprint \\n Backlight Keyboard \\n OS Windows \\n10 \\n Garansi 2 Tahun \\n \\n Interface : 1 USB 3.1 Type-C Gen 2, HDMI, 2 USB 3.1 Gen 1, Audio, MicroSD\",\n\t\"enable\": true,\n\t\"categories\": [1,2,7]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/19",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"19"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Delete Image Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/product-images/3,9",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product-images",
+								"3,9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Image Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/E:/Pictures/stroomnet.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/product-images",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"product-images"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
