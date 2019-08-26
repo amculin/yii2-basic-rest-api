@@ -17,7 +17,8 @@ class ProductController extends ActiveController
 
         // customize the data provider preparation with the "prepareDataProvider()" method
         $actions['index']['prepareDataProvider'] = [$this, 'listAll'];
-        $actions['view']['findModel'] = [$this, 'findModel'];
+        $actions['view']['findModel'] = [$this, 'view'];
+        $actions['update']['findModel'] = [$this, 'findModel'];
 
         return $actions;
     }
@@ -41,17 +42,11 @@ class ProductController extends ActiveController
         return $data;
     }
 
-    public function findModel($id)
+    public function view($id)
     {
-        $model = $this->modelClass::find([
-            'with' => ['productImages', 'productCategories']
-        ])->where(['id' => $id])->one();
-
-        if ($model == null)
-            throw new \yii\web\NotFoundHttpException('Object not found: ' . $id);
+        $model = $this->findModel($id);
 
         $data = [];
-
         $data['id'] = $model->id;
         $data['name'] = $model->name;
         $data['description'] = $model->description;
@@ -60,6 +55,18 @@ class ProductController extends ActiveController
         $data['categories'] = $model->productCategories != null ? $this->getProductCategoriesList($model->productCategories) : [];
 
         return $data;
+    }
+
+    public function findModel($id)
+    {
+        $model = $this->modelClass::find([
+            'with' => ['productImages', 'productCategories']
+        ])->where(['id' => $id])->one();
+
+        if ($model == null)
+            throw new \yii\web\NotFoundHttpException('Object not found: ' . $id);
+        
+        return $model;
     }
 
     public function getProductImagesList($productImages)

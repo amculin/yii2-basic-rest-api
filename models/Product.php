@@ -85,6 +85,28 @@ class Product extends BaseModel
                 $object->saveAs($uploadPath . $image->file);
                 $image->saveProductImage($this->id);
             }
+        } else {
+            $categories = Yii::$app->request->getBodyParam('categories');
+            $oldCategories = CategoryProduct::find()->select(['category_id'])->where(['product_id' => $this->id])
+                ->asArray()->all();
+            
+            $categoryList = [];
+            if (isset($oldCategories)) {
+                foreach ($oldCategories as $key => $val) {
+                    $categoryList[] = $val['category_id'];
+                }
+            }
+
+            if ($categories != $categoryList) {
+                CategoryProduct::deleteAll(['product_id' => $this->id]);
+
+                foreach ($categories as $key => $val) {
+                    $categoryProduct = new CategoryProduct();
+                    $categoryProduct->product_id = $this->id;
+                    $categoryProduct->category_id = $val;
+                    $categoryProduct->save();
+                }
+            }
         }
     }
 
